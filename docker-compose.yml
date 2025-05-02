@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  vision:
+    build: .
+    shm_size: 4g
+    ports:
+      - "6080:6080"
+      - "3030:3030"
+    restart: unless-stopped
