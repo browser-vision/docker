@@ -1,4 +1,4 @@
-FROM ubuntu:24.10 AS base
+FROM ubuntu:24.04 AS base
 
 # Avoid interactive prompts during installation
 ENV DEBIAN_FRONTEND=noninteractive
@@ -15,8 +15,7 @@ RUN apt update && apt install -y --no-install-recommends \
   locales \
   curl \
   ca-certificates \
-  libxdo3 \
-  && rm -rf /var/lib/apt/lists/*
+  libxdo3
 
 # Generate locales
 RUN locale-gen en_US.UTF-8
@@ -25,20 +24,17 @@ RUN apt update && apt install -y --no-install-recommends \
   xorg \
   xfce4 \
   xfce4-terminal \
-  xauth \
-  && rm -rf /var/lib/apt/lists/*
+  xauth
 
 # Install VNC related packages
 RUN apt update && apt install -y --no-install-recommends \
   tightvncserver \
   novnc \
-  websockify \
-  && rm -rf /var/lib/apt/lists/*
+  websockify
 
 # Install webkit dependency for Vision
 RUN apt update && apt install -y --no-install-recommends \
-  libwebkit2gtk-4.1-0 \
-  && rm -rf /var/lib/apt/lists/*
+  libwebkit2gtk-4.1-0
 
 # Install chromium dependencies.
 RUN apt update && apt install -y software-properties-common 
