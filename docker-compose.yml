@@ -2,8 +2,8 @@ services:
   vision:
     build: .
     shm_size: 4g
-    # network `host` will expose all ports.
-    network: "host"
+    # network_mode `host` will expose all ports.
+    network_mode: "host"
     environment:
       VISION_HTTP_SERVER: "0.0.0.0:3030" # listen on public addr for future port exposing
     restart: unless-stopped
