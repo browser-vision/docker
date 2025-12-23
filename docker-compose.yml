@@ -3,8 +3,9 @@ services:
     build: .
     shm_size: 4g
     environment:
-      VISION_HTTP_SERVER: "0.0.0.0:3030"
+      VISION_HTTP_SERVER: "0.0.0.0:3030" # listen on public addr for future port exposing
     ports:
-      - "6080:6080"
-      - "3030:3030"
+      - "6080:6080" # expose VNC port
+      - "3030:3030" # expose Vision HTTP API port
+      - "30000-40000:30000-40000" # expose TCP port range for future browser instances
     restart: unless-stopped
