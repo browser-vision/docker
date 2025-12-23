@@ -62,7 +62,7 @@ websockify --web /usr/share/novnc/ 0.0.0.0:6080 localhost:5901 &
 echo "http://localhost:6080"
 
 # Start the application
-VISION_HTTP_SERVER=127.0.0.1:3030 Vision &
+Vision &
 
 # Keep the container running and show logs for debugging
 tail -f ~/.vnc/*log
