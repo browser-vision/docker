@@ -19,25 +19,20 @@ RUN apt update && apt install -y --no-install-recommends \
 
 # Generate locales
 RUN locale-gen en_US.UTF-8
+
 # Install a simpler desktop environment that works better with VNC
-RUN apt update && apt install -y --no-install-recommends \
+RUN apt install -y --no-install-recommends \
   xorg \
   xfce4 \
   xfce4-terminal \
-  xauth
-
-# Install VNC related packages
-RUN apt update && apt install -y --no-install-recommends \
+  xauth \
   tightvncserver \
   novnc \
-  websockify
+  websockify \
+  libwebkit2gtk-4.1-0 \
+  software-properties-common
 
-# Install webkit dependency for Vision
-RUN apt update && apt install -y --no-install-recommends \
-  libwebkit2gtk-4.1-0
-
-# Install chromium dependencies.
-RUN apt update && apt install -y software-properties-common 
+# Install chromium and it's dependencies.
 RUN add-apt-repository ppa:xtradeb/apps -y \
   && apt update \
   && apt install -y chromium\
